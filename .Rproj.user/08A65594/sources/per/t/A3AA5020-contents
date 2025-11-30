@@ -1,8 +1,8 @@
 ---
 title: "Basic R and how to read in data"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -151,6 +151,9 @@ excel_data <- read_xlsx(filename, sheet = 1) #(to read the first sheet)
 There is a text file in your dataset so you can practice: psa.txt
 
 ```{r}
+library(readr)
+psa <- read_csv("psa.txt")
+View(psa) 
 # Add your code here!
 ```
 
@@ -164,6 +167,9 @@ Use a few of them when you read in fev.csv and look at the data, is that what yo
 --> Apply the summary function to a tibble. What does it do?
 
 ```{r}
+library(here)
+fev_data <- read_csv(here("fev.csv"))
+summary(fev_data)
 # Add your code here!
 ```
 

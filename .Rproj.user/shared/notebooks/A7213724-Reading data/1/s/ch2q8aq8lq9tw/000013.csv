@@ -1,0 +1,3 @@
+"0","age_eq5d<- Hip_Replacement_CCG_1819 %>% select('Age Band','Pre-Op Q EQ5D Index','Post-Op Q EQ5D Index'  ) %>% "
+"0","  rename(Age = 'Age Band' , EQ5DPre= 'Pre-Op Q EQ5D Index', EQ5DPost= 'Post-Op Q EQ5D Index')"
+"0","head(age_eq5d)"

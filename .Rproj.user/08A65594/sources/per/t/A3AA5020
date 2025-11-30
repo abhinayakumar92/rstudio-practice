@@ -3,7 +3,7 @@
     "path": "~/GitHub/Rstudio-Practice/R_read-data.Rmd",
     "project_path": "R_read-data.Rmd",
     "type": "r_markdown",
-    "hash": "1679489127",
+    "hash": "4222629578",
     "contents": "",
     "dirty": false,
     "created": 1764273088331.0,
@@ -13,15 +13,15 @@
         "source_window_id": "",
         "Source": "Source",
         "cursorPosition": "123,6",
-        "scrollLine": "108",
-        "last_setup_crc32": "8efcf98abb338d19"
+        "scrollLine": "0",
+        "last_setup_crc32": ""
     },
     "folds": "",
-    "lastKnownWriteTime": 1764273951,
+    "lastKnownWriteTime": 1764281126,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1764273951190,
+    "last_content_update": 1764329273427,
     "read_only": false,
     "read_only_alternatives": []
 }
