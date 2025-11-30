@@ -1,0 +1,3 @@
+"0","tidy_age_eq5d_noNA <- age_eq5d_noNA %>% "
+"0","  pivot_longer(c(EQ5DPre, EQ5DPost),names_to = 'Time',names_prefix = 'EQ5D', values_to = 'EQ5D' )"
+"0","head(tidy_age_eq5d_noNA)"

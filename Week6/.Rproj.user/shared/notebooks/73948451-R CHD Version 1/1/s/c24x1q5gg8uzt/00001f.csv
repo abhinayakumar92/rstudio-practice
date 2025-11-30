@@ -1,0 +1,2 @@
+"0","CHD_tidy <- CHD_total %>% select (year, period, numerator, measure) %>%  filter( year >= 2017) %>% rename(Hosp_per_year = 'numerator', HospRate_100k = 'measure' )"
+"0","head(CHD_tidy)"

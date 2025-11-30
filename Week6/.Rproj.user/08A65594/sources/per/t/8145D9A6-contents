@@ -1,0 +1,73 @@
+---
+title: "Hip replacement operations"
+author: "Abhinaya"
+date: "2025-11-28"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aim
+
+To examine the data related aim
+
+## Load packages
+```{r load-packages}
+library(tidyverse)
+```
+
+
+## Read in data
+Include information about the data. where it has come from, what it includes, Dwnloaded from what link, data dictionary
+
+```{r read-data}
+Hip_Replacement_CCG_1819 <- read_csv("Hip Replacement CCG 1819.csv")
+```
+## Prepare the data
+
+```{r inspect-data}
+glimpse(Hip_Replacement_CCG_1819)
+
+```
+## Select age and quality of life pre and post operation
+
+```{r select-age-eq5d}
+age_eq5d<- Hip_Replacement_CCG_1819 %>% select('Age Band','Pre-Op Q EQ5D Index','Post-Op Q EQ5D Index'  ) %>% 
+  rename(Age = 'Age Band' , EQ5DPre= 'Pre-Op Q EQ5D Index', EQ5DPost= 'Post-Op Q EQ5D Index')
+head(age_eq5d)
+
+
+```
+
+## remove missing values
+```{r remove-missing-data}
+age_eq5d$Age %>% unique()
+age_eq5d$Age %>% table()
+age_eq5d %>% summary(
+)
+age_eq5d_noNA <- age_eq5d %>% drop_na() %>% filter( Age !='*')
+table(age_eq5d_noNA$Age)
+summary(age_eq5d_noNA)
+
+```
+## Check that data is tidy
+```{r tidy-data}
+head(age_eq5d_noNA)
+tidy_age_eq5d_noNA <- age_eq5d_noNA %>% 
+  pivot_longer(c(EQ5DPre, EQ5DPost),names_to = 'Time',names_prefix = 'EQ5D', values_to = 'EQ5D' )
+head(tidy_age_eq5d_noNA)
+
+```
+
+
+## Plot graph
+```{r plot-graph}
+tidy_age_eq5d_noNA$Time <- factor(tidy_age_eq5d_noNA$Time, levels = c('Pre', 'Post'))
+tidy_age_eq5d_noNA %>% ggplot() + geom_boxplot(aes(x= Time, y= EQ5D, colour = Age))
+
+```
+

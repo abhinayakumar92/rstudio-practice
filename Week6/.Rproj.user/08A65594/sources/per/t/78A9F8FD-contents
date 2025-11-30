@@ -1,0 +1,79 @@
+---
+title: "HDS assessment report"
+author: "Abhinaya"
+date: "2025-11-29"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aim 
+
+To examine the trend in age–sex standardised Coronary Heart Disease hospitalisation rates in Scotland between 2016/17–2018/19 and 2021/22–2023/24 according to the rolling averages" 
+
+### Research Question
+
+"How have age–sex standardised CHD hospitalisation rates in Scotland changed between 2016/17–2018/19 and 2021/22–2023/24 according to the rolling averages" 
+
+#Load Packages
+
+```{r load-packages}
+library(tidyverse)
+library(readr) 
+library(tidyr) 
+library(dplyr) 
+library(here) 
+```
+
+## Read in data
+
+The dataset used for the study is the coronary heart disease (CHD) patient hospitalisations,  
+in Scotland, for the years 2006-2022, from the Scottish Public Health Observatory Online  
+profiles Tool. 
+
+Numerator= Number of patients admitted due to coronary heart disease each year
+Denominator = Total population each year. 
+Measure = Rate of admissions per 100,000 persons in the population.
+
+```{r read-data}
+CHD_total <- read_csv("ScotPHO_CHD_total.csv")
+glimpse(CHD_total)
+```
+
+## Select relevant columns ( year, period, numerator, measure)
+
+```{r Data_cleaning}
+CHD_tidy <- CHD_total %>% select (year, period, numerator, measure) %>%  filter( year >= 2017) %>% rename(Hosp_per_year = 'numerator', HospRate_100k = 'measure' )
+head(CHD_tidy)
+```
+## Summary statistics of the data
+
+```{r summary}
+summary(CHD_tidy)
+```
+#Create table
+
+```{r}
+CHD_table <- view(CHD_tidy)
+```
+
+
+## Plot line graph
+
+Plotting a line graph to show the trend line of the change in hospitalisation rates over the years.
+
+```{r plot-graph}
+ggplot( CHD_tidy,aes(x=year, y=HospRate_100k )) + labs(title = "CHD Hospitalisation Rate in Scotland (2017-2022)", x="Year ( 3 year rolling average)", y= "Rate per 100,000") + geom_line()
+
+```
+
+## Plot a bar graph
+
+```{r bar-chart}
+ggplot(CHD_tidy, aes(x= year, y= Hosp_per_year)) + geom_col(fill = "blue4") + labs( title="Rolling 3 year average Hospital Admissions", x="Year", y="Rolling average admissions") + theme_classic()
+```
+

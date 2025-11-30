@@ -1,0 +1,2 @@
+"0","ggplot( CHD_tidy,aes(x=year, y=HospRate_100k )) + labs(title = ""CHD Hospitalisation Rate in Scotland (2017-2022)"", x=""Year ( 3 year rolling average)"", y= ""Rate per 100,000"") + geom_line()"
+"0",""

@@ -1,0 +1,1 @@
+"0","ggplot(CHD_tidy, aes(x= year, y= Hosp_per_year)) + geom_col(fill = ""blue4"") + labs( title=""Rolling 3 year average Hospital Admissions"", x=""Year"", y=""Rolling average admissions"") + theme_classic()"
